@@ -2,7 +2,7 @@
 
 def encode_shuffle(message, secret):
     shuffled_string = do_shuffle(message, shuffle_axis(secret))
-    return ""
+    return shuffled_string
 
 def decode_shuffle(message, secret):
     shuffled_string = do_shuffle(message, shuffle_axis(secret))
@@ -14,7 +14,7 @@ def shuffle_axis(secret):
         number += ord(letter)
     number += len(secret)
     #number = number % len(message)
-    print("axis of rotation for : " + secret + " is " + str(number))
+    print("axis of rotation for : " + secret + " is " + str(number)
     return number
 
 def do_shuffle(message, axis):
@@ -23,3 +23,10 @@ def do_shuffle(message, axis):
     message.reverse()
     
     return ''.join(message)
+    def shift(seq, n):
+        a = n % len(seq)
+        return seq[-a:] + seq[:-a]
+    
+    message = shift(message, axis)
+    return ''.join(message)
+
